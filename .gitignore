@@ -1,0 +1,5 @@
+# Node modules
+frontend/node_modules/
+
+# Vite build output
+frontend/dist/
