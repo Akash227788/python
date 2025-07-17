@@ -1,13 +1,25 @@
 # Frontend React App
 
-This simple React-based page allows you to send four parameters to a backend Python API via a POST request and display the response.
+This React project is built with [Vite](https://vitejs.dev/). It provides a simple form for sending four parameters to a Python API via POST and shows the response.
 
-## Usage
+## Setup
 
-1. Ensure your Python API is running locally and listening on `http://localhost:5000/api`.
-2. Serve `index.html` using any static file server (e.g., `python3 -m http.server` inside this folder) or open it directly in your browser.
-3. Fill in the four parameter fields and click **Submit**. The response from the API will appear below the form.
+1. From this `frontend` directory, install dependencies:
 
-## Configuration
+   ```bash
+   npm install
+   ```
 
-- If your API runs at a different URL, modify the fetch call in `index.html` accordingly.
+2. Start the development server:
+
+   ```bash
+   npm run dev
+   ```
+
+The app will be available at `http://localhost:5173` by default. Ensure your API is running and listening on `http://localhost:5000/api`. If it is hosted elsewhere, edit the fetch URL in `src/App.jsx`.
+
+To build for production run:
+
+```bash
+npm run build
+```

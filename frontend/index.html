@@ -1,87 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>React API Example</title>
-  <!-- Load React and Babel from CDNs -->
-  <script crossorigin src="https://unpkg.com/react@17/umd/react.development.js"></script>
-  <script crossorigin src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
-  <script crossorigin src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
-  <style>
-    body { font-family: Arial, sans-serif; margin: 20px; }
-    form { display: flex; flex-direction: column; width: 300px; gap: 8px; }
-    label { display: flex; flex-direction: column; }
-    button { width: 100px; padding: 6px 10px; }
-    .result { margin-top: 20px; }
-  </style>
-</head>
-<body>
-  <div id="root"></div>
-
-  <!-- Our React code -->
-  <script type="text/babel">
-    function App() {
-      const [params, setParams] = React.useState({ a: '', b: '', c: '', d: '' });
-      const [result, setResult] = React.useState('');
-      const [error, setError] = React.useState('');
-
-      const handleChange = e => {
-        const { name, value } = e.target;
-        setParams(prev => ({ ...prev, [name]: value }));
-      };
-
-      const handleSubmit = async e => {
-        e.preventDefault();
-        setResult('');
-        setError('');
-        try {
-          const response = await fetch('http://localhost:5000/api', {
-            method: 'POST',
-            headers: {
-              'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(params)
-          });
-          if (!response.ok) {
-            throw new Error(`Server responded with ${response.status}`);
-          }
-          const data = await response.json();
-          setResult(JSON.stringify(data));
-        } catch (err) {
-          setError(err.message);
-        }
-      };
-
-      return (
-        <div>
-          <h1>API Request</h1>
-          <form onSubmit={handleSubmit}>
-            <label>
-              Param A:
-              <input name="a" value={params.a} onChange={handleChange} />
-            </label>
-            <label>
-              Param B:
-              <input name="b" value={params.b} onChange={handleChange} />
-            </label>
-            <label>
-              Param C:
-              <input name="c" value={params.c} onChange={handleChange} />
-            </label>
-            <label>
-              Param D:
-              <input name="d" value={params.d} onChange={handleChange} />
-            </label>
-            <button type="submit">Submit</button>
-          </form>
-          {result && <pre className="result">{result}</pre>}
-          {error && <p style={{ color: 'red' }}>{error}</p>}
-        </div>
-      );
-    }
-
-    ReactDOM.render(<App />, document.getElementById('root'));
-  </script>
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>React API Example</title>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
 </html>
